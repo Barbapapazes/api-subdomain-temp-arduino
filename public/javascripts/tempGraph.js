@@ -16,6 +16,8 @@ async function drawGraph() {
             datasets: [{
                 label: 'Temperature (°C)',
                 data: data.valueY,
+                pointRadius: 5,
+                pointHitRadius: 7,
                 pointStyle: 'rectRounded',
                 pointBorderColor: 'rgba(0, 0, 0, 0)',
                 pointBackgroundColor: function(context) {
@@ -34,12 +36,16 @@ async function drawGraph() {
             }]
         },
         options: {
+            tooltips: {
+                mode: 'nearest'
+            },
             responsive: false,
             scales: {
                 yAxes: [{
                     display: true,
                     gridLines: {
-                        color: 'rgba(255, 255, 255, 0.2)'
+                        color: 'rgba(255, 255, 255, 0.2)',
+                        zeroLineColor: "rgba(255,255,255,0.3)"
                     },
                     ticks: {
                         fontColor: 'rgba(255, 255, 255, 0.6)'
@@ -51,8 +57,10 @@ async function drawGraph() {
                 }],
                 xAxes: [{
                     minRotation: 90,
+                    display: true,
                     gridLines: {
-                        color: 'rgba(255, 255, 255, 0.2)'
+                        color: 'rgba(255, 255, 255, 0.2)',
+                        zeroLineColor: "rgba(255,255,255,0.3)"
                     },
                     ticks: {
                         fontColor: 'rgba(255, 255, 255, 0.6)'

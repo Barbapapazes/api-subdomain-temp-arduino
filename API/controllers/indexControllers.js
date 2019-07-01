@@ -1,17 +1,7 @@
-const Datastore = require('nedb')
-const database = new Datastore('tempAPI.db')
-database.loadDatabase()
+const Temperature = require('../database/models/Temperature')
 
 exports.index = (req, res, next) => {
     res.send('welcome to the api')
-}
-
-exports.postAddSensor = (req, res, next) => {
-    const sensor = {...req.body, values: [] }
-    database.insert(sensor, (err, data) => {
-        if (err) throw err
-        res.json(data)
-    })
 }
 
 exports.postTemp = (req, res, next) => {
