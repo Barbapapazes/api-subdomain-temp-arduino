@@ -3,6 +3,8 @@ drawGraph()
 async function drawGraph() {
     let data = await getData()
     console.log(data)
+    if (data == undefined)
+        return
 
     // set the date
     data.dateX = data.dateX.map(value => new Date(value).toLocaleString('en-US', { minute: 'numeric', hour: 'numeric', day: 'numeric', month: 'short' }))
@@ -76,13 +78,17 @@ async function getData() {
     const URLparams = new URLSearchParams(window.location.search)
     const host = location.host
     const id = URLparams.get('id')
-    const response = await fetch(`http://api.${host}/temp/${id}`)
+    const response = await fetch(`http://api.${host}/temp/one/${id}`)
     document.title += ` ${id}`
     console.log(response)
+    if (response.status != 200) {
+        document.querySelector('h1').textContent = response.statusText
+        return
+    }
     const data = await response.json()
     const dateX = []
     const valueY = []
-    data.forEach(element => {
+    data.values.forEach(element => {
         dateX.push(element.date)
         valueY.push(element.temp)
     })

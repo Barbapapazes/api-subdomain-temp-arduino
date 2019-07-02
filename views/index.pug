@@ -5,6 +5,6 @@ block content
 
   a(href="/tempAllSensors", title="All Sensor") All Sensors
   for sensor in sensors
-    a(href='/temp?id=' + sensor.id, title=sensor.name) 
+    a(href='/temp?id=' + sensor.name, title=sensor.name) 
       h2= sensor.name
       p= sensor.model.name

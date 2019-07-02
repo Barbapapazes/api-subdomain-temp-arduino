@@ -6,8 +6,14 @@ const temperatureControllers = require('../controllers/temperatureControllers')
 /* GET home page. */
 router.get('/', temperatureControllers.index)
 
-router.post('/addTemp', temperatureControllers.postAddTemp)
+router.get('/all', temperatureControllers.allTemperaturesAllSensors)
 
-router.get('/:id', temperatureControllers.getSensorTemp)
+/** Handle CRUD Temperature */
+router.get('/one/:name', temperatureControllers.allTemperaturesOneSensor)
+    .post('/', temperatureControllers.addTemperature)
+    .put('/', temperatureControllers.upsertTemperature)
+    .delete('/', temperatureControllers.deleteTemperature)
+
+
 
 module.exports = router

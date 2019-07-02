@@ -14,7 +14,8 @@ router
     .delete('/model/:name', setupControllers.deleteModel)
 
 /** Handle CRUD Sensor */
-router.get('/sensor', setupControllers.sensor)
+router
+    .get('/sensor', setupControllers.sensor)
     .post('/sensor', setupControllers.addSensor)
     .put('/sensor/:name', setupControllers.updateSensor)
     .delete('/sensor/:name', setupControllers.deleteSensor)
