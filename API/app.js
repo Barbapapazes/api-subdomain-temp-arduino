@@ -13,14 +13,6 @@ var temperatureRouter = require('./routes/temperature')
 
 var app = express()
 
-mongoose.connect('mongodb://localhost:27017/myapp', { useNewUrlParser: true })
-    .then(() => {
-        console.log('You are now connected !')
-    })
-    .catch((err) => {
-        console.log('Something went wrong', err)
-    })
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');

@@ -6,8 +6,17 @@ const setupControllers = require('../controllers/setupControllers')
 /* GET home page. */
 router.get('/', setupControllers.index)
 
-router.post('/addModel', setupControllers.postAddModel)
+/** Handle CRUD Model */
+router
+    .get('/model', setupControllers.model)
+    .post('/model', setupControllers.addModel)
+    .put('/model/:name', setupControllers.updateModel)
+    .delete('/model/:name', setupControllers.deleteModel)
 
-router.post('/addSensor', setupControllers.postAddSensor)
+/** Handle CRUD Sensor */
+router.get('/sensor', setupControllers.sensor)
+    .post('/sensor', setupControllers.addSensor)
+    .put('/sensor/:name', setupControllers.updateSensor)
+    .delete('/sensor/:name', setupControllers.deleteSensor)
 
 module.exports = router

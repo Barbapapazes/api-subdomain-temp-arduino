@@ -6,6 +6,6 @@ const indexControllers = require('../controllers/indexControllers')
 /* GET home page. */
 router.get('/', indexControllers.index)
 
-router.get('/temp', indexControllers.tempAll)
+router.get('/temp', indexControllers.tempOne)
 
 module.exports = router

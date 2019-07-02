@@ -8,4 +8,6 @@ router.get('/', temperatureControllers.index)
 
 router.post('/addTemp', temperatureControllers.postAddTemp)
 
+router.get('/:id', temperatureControllers.getSensorTemp)
+
 module.exports = router

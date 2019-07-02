@@ -8,8 +8,17 @@ let temperatureSchema = new Schema({
         ref: 'Sensor',
         required: true,
         unique: true
-    }
-
+    },
+    values: [{
+        temp: {
+            type: Number,
+            required: true
+        },
+        date: {
+            type: Date,
+            default: new Date()
+        }
+    }]
 })
 
 module.exports = mongoose.model('Temperature', temperatureSchema)

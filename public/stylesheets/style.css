@@ -8,8 +8,9 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    color: white
 }
 
-h1 {
+a {
     color: white
 }
