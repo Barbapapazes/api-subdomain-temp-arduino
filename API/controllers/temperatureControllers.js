@@ -85,7 +85,8 @@ exports.upsertTemperature = (req, res) => {
             Temperature.updateOne({ idSensor: result._id }, {
                 $push: {
                     values: {
-                        temp: req.body.temp
+                        temp: req.body.temp,
+                        date: new Date()
                     }
                 }
             }, {
