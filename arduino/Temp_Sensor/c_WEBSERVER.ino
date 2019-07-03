@@ -1,29 +1,3 @@
-/*
-   ESP8266 SPIFFS HTML Web Page with JPEG, PNG Image
-
-*/
-
-#include <ESP8266WiFi.h>
-#include <ESP8266HTTPClient.h>
-#include <ESP8266WebServer.h>
-#include <FS.h>   //Include File System Headers
-#include <string.h>
-
-#include <SimpleDHT.h>
-
-int pinDHT11 = 2;
-SimpleDHT11 dht11;
-
-//ESP AP Mode configuration
-const char *ssid = "ESPWebServer";
-const char *password = "password";
-
-char value[3][40];
-
-bool startServer = false;
-
-ESP8266WebServer server(80);
-
 String readName() {
   File f = SPIFFS.open("/data.txt", "r");
   String message;
@@ -107,7 +81,11 @@ void handleBody() { //Handler for the body path
   String message = server.arg("plain");
   Serial.println(message);
   saveName(message);
-
+  
+  flashLED(greenLed);
+  File f = SPIFFS.open("/set.txt", "w");
+  f.println("set");
+  f.close();
   server.sendHeader("Location", "/receive.html", true);  //Redirect to our html web page
   server.send(302, "text/plane", "");
 }
@@ -127,99 +105,6 @@ void handleWebRequests() {
   }
   server.send(404, "text/plain", message);
   Serial.println(message);
-}
-
-void setup() {
-  delay(1000);
-  Serial.begin(115200);
-  Serial.println();
-
-  //Initialize File System
-  SPIFFS.begin();
-  Serial.println("File System Initialized");
-
-  File f = SPIFFS.open("/data.txt", "r");
-
-  if (!f) {
-    startServer = true;
-    //Initialize AP Mode
-    WiFi.softAP(ssid);  //Password not used
-    IPAddress myIP = WiFi.softAPIP();
-    Serial.print("Web Server IP:");
-    Serial.println(myIP);
-
-    //Initialize Webserver
-    server.on("/", handleRoot);
-    server.on("/body", handleBody); //Associate the handler function to the path
-    server.on("/file", handleFile);
-    server.on("/restart", handleRestart);
-    server.on("/reset", handleReset);
-    server.onNotFound(handleWebRequests); //Set setver all paths are not found so we can handle as per URI
-    server.begin();
-  } else {
-    f.close();
-    readName();
-    WiFi.mode(WIFI_STA);
-    char *ssid = value[1];
-    char *password = value[2];
-    Serial.println(ssid);
-    Serial.println(password);
-    WiFi.begin("SFR_1680", "jiyd6cex46mqet9hmh62");   //WiFi connection
-
-    while (WiFi.status() != WL_CONNECTED) {  //Wait for the WiFI connection completion
-
-      delay(500);
-      Serial.println("Waiting for connection");
-
-    }
-
-    Serial.print("Connected to ");
-    Serial.println(ssid);
-  }
-
-
-}
-
-void loop() {
-  if (startServer) {
-    server.handleClient();
-  } else {
-    byte temperature = 0;
-    byte humidity = 0;
-    byte data[40] = {0};
-    if (dht11.read(pinDHT11, &temperature, &humidity, data)) {
-      Serial.print("Read DHT11 failed");
-      return;
-    }
-    Serial.print("Sample OK: ");
-    Serial.print((int)temperature); Serial.print(" *C, ");
-    Serial.print((int)humidity); Serial.println(" %");
-
-    if (WiFi.status() == WL_CONNECTED) { //Check WiFi connection status
-
-      HTTPClient http;    //Declare object of class HTTPClient
-
-      http.begin("http://api.myapp:3000/temp");      //Specify request destination
-      http.addHeader("Content-Type", "application/x-www-form-urlencoded");  //Specify content-type header
-
-      String data = "name=" + String(value[0]) +"&temp=" + String(temperature);
-      int httpCode = http.PUT(data);   //Send the request
-      String payload = http.getString();                  //Get the response payload
-
-      Serial.println(httpCode);   //Print HTTP return code
-      Serial.println(payload);    //Print request response payload
-
-      http.end();  //Close connection
-
-    } else {
-
-      Serial.println("Error in WiFi connection");
-
-    }
-
-    delay(60000 * 30);  //Send a request every 60 seconds * 30 => 30 minutes
-  }
-
 }
 
 bool loadFromSpiffs(String path) {

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Server & Body</title>
+</head>
+
+<body>
+    <h1>Welcome on board !</h1>
+    <form action="/body" method="post" enctype="application/json">
+        <input type="text" name="location" id="location" value="location">
+        <input type="text" name="ssid" id="ssid" value="ssid">
+        <input type="text" name="password" id="password" value="password">
+        <button type="submit">Submit</button>
+    </form>
+    <div class="content"></div>
+    <script>
+        loadDoc('/data.txt', myFunction1)
+
+        let input = document.querySelectorAll('input')
+
+        function loadDoc(url, cFunction) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    cFunction(this)
+                }
+            };
+            xhttp.open("GET", url, true);
+            xhttp.send();
+        }
+
+        function myFunction1(xhttp) {
+            console.log(xhttp.responseText)
+            let res = xhttp.responseText
+            document.querySelector('.content').textContent = xhttp.responseText
+            if (res != '') {
+                let values = res.split('&')
+                values.forEach((element, index) => {
+                    input[index].value = (element.split('='))[1]
+                });
+            }
+
+        }
+    </script>
+</body>
+
+</html>
