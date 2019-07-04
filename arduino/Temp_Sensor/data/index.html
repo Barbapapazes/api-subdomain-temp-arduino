@@ -5,45 +5,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Server & Body</title>
+    <title>Temp Sensor</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1>Welcome on board !</h1>
-    <form action="/body" method="post" enctype="application/json">
-        <input type="text" name="location" id="location" value="location">
-        <input type="text" name="ssid" id="ssid" value="ssid">
-        <input type="text" name="password" id="password" value="password">
-        <button type="submit">Submit</button>
-    </form>
-    <div class="content"></div>
+    <div class="content">
+        <h1>welcome on board !</h1>
+
+        <form action="/body" method="post" enctype="application/json">
+            <fieldset>
+                <legend>Configuration</legend>
+                <div class="location-sensor">
+                    <label for="location">location</label>
+                    <input type="text" name="location" id="location" placeholder="location">
+                </div>
+                <div class="ssid">
+                    <label for="ssid">wifi name</label>
+                    <input type="text" name="ssid" id="ssid" placeholder="ssid">
+                </div>
+                <div class="password">
+                    <label for="password">wifi password</label>
+                    <input type="text" name="password" id="password" placeholder="password">
+                </div>
+                <div class="button">
+                    <button type="reset">reset</button>
+                    <button type="submit">submit</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+
     <script>
-        loadDoc('/data.txt', myFunction1)
+        loadDoc('/data.txt')
 
         let input = document.querySelectorAll('input')
 
-        function loadDoc(url, cFunction) {
+        function loadDoc(url) {
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
-                    cFunction(this)
+                    let res = this.responseText
+                    if (res != '') {
+                        let values = res.split('&')
+                        values.forEach((element, index) => {
+                            input[index].value = (element.split('='))[1]
+                        })
+                    }
                 }
-            };
-            xhttp.open("GET", url, true);
-            xhttp.send();
-        }
-
-        function myFunction1(xhttp) {
-            console.log(xhttp.responseText)
-            let res = xhttp.responseText
-            document.querySelector('.content').textContent = xhttp.responseText
-            if (res != '') {
-                let values = res.split('&')
-                values.forEach((element, index) => {
-                    input[index].value = (element.split('='))[1]
-                });
             }
-
+            xhttp.open("GET", url, true)
+            xhttp.send()
         }
     </script>
 </body>

@@ -1,3 +1,7 @@
+# VS code configuration
+.vscode/arduino.json
+.vscode/c_cpp_properties.json
+
 # Logs
 logs
 *.log
