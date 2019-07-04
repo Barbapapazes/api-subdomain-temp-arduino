@@ -1,0 +1,173 @@
+/*
+Variables
+*/
+
+$color: #6a9955;
+$color-bulb-light: #6a9955;
+// Dark theme
+$color-dark-text: white;
+$color-dark-background: #333333;
+$color-dark-header-background: #575757;
+$color-dark-footer-background: #575757;
+$color-dark-hover: white;
+// Light theme
+$color-light-text: black;
+$color-light-background: white;
+$color-light-header-background: #ebebeb;
+$color-light-footer-background: #ebebeb;
+$color-light-hover: #000000;
+// Error
+$color-error-text: red;
+$color-error-background: rgba(255, 0, 0, 0.137);
+$border-error: 1px solid rgba(255, 0, 0, 0.562);
+// Sucess
+$color-sucess-text: green;
+$color-sucess-background: rgba(0, 128, 0, 0.178);
+$border-sucess: 1px solid rgba(0, 128, 0, 0.329);
+// Button
+$color-btn: grey;
+$color-btn-active: #00acee;
+//Transition
+$duration-shorter: 0.2s;
+$duration-short: 0.4s;
+$duration-med: 0.6s;
+$duration-long: 1s;
+// Design
+$border: 1px solid $color;
+$border-radius: 5px;
+$border-radius-top: 5px 5px 0 0;
+$depth-shadow-4: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132),
+0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108) !default;
+$depth-shadow-8: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132),
+0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108) !default;
+$depth-shadow-16: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132),
+0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108) !default;
+$depth-shadow-64: 0 25.6px 57.6px 0 rgba(0, 0, 0, 0.22),
+0 4.8px 14.4px 0 rgba(0, 0, 0, 0.18) !default;
+// Mixins
+@mixin underscore($height) {
+    transition: $duration-short;
+    &::after {
+        content: " ";
+        display: block;
+        margin-top: 0px;
+        width: 0%;
+        height: $height;
+        transition: width linear $duration-shorter;
+    }
+    &:hover {
+        &::after {
+            width: 100%;
+        }
+    }
+}
+
+
+/*
+Mixins
+*/
+
+@mixin theme ($color, $color-text, $color-background, $color-header-background, $color-footer-background, $color-hover, $border, $border-radius, $color-error-text, $color-error-background, $border-error, $color-sucess-text, $color-sucess-background, $border-sucess) {
+    color: $color-text;
+    background-color: $color-background;
+    header {
+        background-color: $color-header-background;
+        .title {
+            color: $color;
+        }
+        nav {
+            a {
+                &::after {
+                    background-color: $color;
+                }
+                &:hover {
+                    color: $color-hover;
+                }
+            }
+        }
+    }
+    .msgStatus {
+        &.error {
+            color: $color-error-text;
+            background-color: $color-error-background;
+            border: $border-error;
+            border-radius: $border-radius;
+        }
+        &.sucess {
+            color: $color-sucess-text;
+            background-color: $color-sucess-background;
+            border: $border-sucess;
+            border-radius: $border-radius;
+        }
+    }
+    .links a {
+        transition-property: box-shadow;
+        transition-duration: $duration-short;
+        &:hover {
+            box-shadow: $depth-shadow-8;
+        }
+    }
+    a {
+        color: $color;
+        &::after {
+            background-color: $color;
+        }
+        &:hover {
+            color: $color-hover;
+        }
+    }
+    form {
+        box-shadow: $depth-shadow-8;
+        border-radius: $border-radius;
+        &:hover {
+            box-shadow: $depth-shadow-16;
+        }
+        fieldset {
+            border: $border;
+            border-radius: $border-radius;
+            .form_group {
+                label {
+                    color: $color-text;
+                }
+                input {
+                    border: $border;
+                    border-radius: $border-radius;
+                }
+            }
+        }
+    }
+    button {
+        border-radius: $border-radius;
+        color: $color-text;
+        border: $border;
+        background-color: $color-background;
+        font-weight: 700;
+        &:hover {
+            color: $color-hover;
+            border: $border;
+            background-color: $color;
+        }
+    }
+    #progressBar {
+        border-radius: $border-radius;
+        background-color: $color-header-background;
+        &::-webkit-progress-bar {
+            border-radius: $border-radius;
+            background-color: $color-header-background;
+        }
+        &::-webkit-progress-value {
+            border-radius: $border-radius;
+            background-color: $color;
+        }
+        &::-moz-progress-bar {
+            border-radius: $border-radius;
+            background-color: $color-header-background;
+        }
+    }
+    footer {
+        background-color: $color-footer-background;
+        .credit {
+            color: $color;
+        }
+    }
+}

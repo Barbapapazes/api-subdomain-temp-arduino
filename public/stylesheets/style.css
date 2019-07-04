@@ -1,16 +1,572 @@
+/*--------------------
+    MAIN SCSS FILE 
+--------------------*/
+/*
+Variables
+*/
+/*
+Mixins
+*/
+/*--------------------
+        Themes 
+--------------------*/
+/*
+Color for your pages
+*/
+body.dark {
+  color: white;
+  background-color: #333333;
+}
+
+body.dark header {
+  background-color: #575757;
+}
+
+body.dark header .title {
+  color: #6a9955;
+}
+
+body.dark header nav a::after {
+  background-color: #6a9955;
+}
+
+body.dark header nav a:hover {
+  color: white;
+}
+
+body.dark .msgStatus.error {
+  color: red;
+  background-color: rgba(255, 0, 0, 0.137);
+  border: 1px solid rgba(255, 0, 0, 0.562);
+  border-radius: 5px;
+}
+
+body.dark .msgStatus.sucess {
+  color: green;
+  background-color: rgba(0, 128, 0, 0.178);
+  border: 1px solid rgba(0, 128, 0, 0.329);
+  border-radius: 5px;
+}
+
+body.dark .links a {
+  transition-property: box-shadow;
+  transition-duration: 0.4s;
+}
+
+body.dark .links a:hover {
+  box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
+}
+
+body.dark a {
+  color: #6a9955;
+}
+
+body.dark a::after {
+  background-color: #6a9955;
+}
+
+body.dark a:hover {
+  color: white;
+}
+
+body.dark form {
+  box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
+  border-radius: 5px;
+}
+
+body.dark form:hover {
+  box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
+}
+
+body.dark form fieldset {
+  border: 1px solid #6a9955;
+  border-radius: 5px;
+}
+
+body.dark form fieldset .form_group label {
+  color: white;
+}
+
+body.dark form fieldset .form_group input {
+  border: 1px solid #6a9955;
+  border-radius: 5px;
+}
+
+body.dark button {
+  border-radius: 5px;
+  color: white;
+  border: 1px solid #6a9955;
+  background-color: #333333;
+  font-weight: 700;
+}
+
+body.dark button:hover {
+  color: white;
+  border: 1px solid #6a9955;
+  background-color: #6a9955;
+}
+
+body.dark #progressBar {
+  border-radius: 5px;
+  background-color: #575757;
+}
+
+body.dark #progressBar::-webkit-progress-bar {
+  border-radius: 5px;
+  background-color: #575757;
+}
+
+body.dark #progressBar::-webkit-progress-value {
+  border-radius: 5px;
+  background-color: #6a9955;
+}
+
+body.dark #progressBar::-moz-progress-bar {
+  border-radius: 5px;
+  background-color: #575757;
+}
+
+body.dark footer {
+  background-color: #575757;
+}
+
+body.dark footer .credit {
+  color: #6a9955;
+}
+
+body.light {
+  color: black;
+  background-color: white;
+}
+
+body.light header {
+  background-color: #ebebeb;
+}
+
+body.light header .title {
+  color: #6a9955;
+}
+
+body.light header nav a::after {
+  background-color: #6a9955;
+}
+
+body.light header nav a:hover {
+  color: #000000;
+}
+
+body.light .msgStatus.error {
+  color: red;
+  background-color: rgba(255, 0, 0, 0.137);
+  border: 1px solid rgba(255, 0, 0, 0.562);
+  border-radius: 5px;
+}
+
+body.light .msgStatus.sucess {
+  color: green;
+  background-color: rgba(0, 128, 0, 0.178);
+  border: 1px solid rgba(0, 128, 0, 0.329);
+  border-radius: 5px;
+}
+
+body.light .links a {
+  transition-property: box-shadow;
+  transition-duration: 0.4s;
+}
+
+body.light .links a:hover {
+  box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
+}
+
+body.light a {
+  color: #6a9955;
+}
+
+body.light a::after {
+  background-color: #6a9955;
+}
+
+body.light a:hover {
+  color: #000000;
+}
+
+body.light form {
+  box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
+  border-radius: 5px;
+}
+
+body.light form:hover {
+  box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
+}
+
+body.light form fieldset {
+  border: 1px solid #6a9955;
+  border-radius: 5px;
+}
+
+body.light form fieldset .form_group label {
+  color: black;
+}
+
+body.light form fieldset .form_group input {
+  border: 1px solid #6a9955;
+  border-radius: 5px;
+}
+
+body.light button {
+  border-radius: 5px;
+  color: black;
+  border: 1px solid #6a9955;
+  background-color: white;
+  font-weight: 700;
+}
+
+body.light button:hover {
+  color: #000000;
+  border: 1px solid #6a9955;
+  background-color: #6a9955;
+}
+
+body.light #progressBar {
+  border-radius: 5px;
+  background-color: #ebebeb;
+}
+
+body.light #progressBar::-webkit-progress-bar {
+  border-radius: 5px;
+  background-color: #ebebeb;
+}
+
+body.light #progressBar::-webkit-progress-value {
+  border-radius: 5px;
+  background-color: #6a9955;
+}
+
+body.light #progressBar::-moz-progress-bar {
+  border-radius: 5px;
+  background-color: #ebebeb;
+}
+
+body.light footer {
+  background-color: #ebebeb;
+}
+
+body.light footer .credit {
+  color: #6a9955;
+}
+
+/*--------------------
+        Base 
+--------------------*/
+/*
+Basics rules
+*/
 * {
-    box-sizing: border-box
+  box-sizing: border-box;
 }
 
 body {
-    background-color: black;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white
+  padding: 0px;
+  margin: 0px;
+  min-height: 100vh;
+  height: auto;
+  font-family: 'Source Code Pro', monospace;
 }
 
-a {
-    color: white
+body a {
+  text-decoration: none;
+}
+
+.msgStatus {
+  position: fixed;
+  left: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  padding: 4px;
+  width: 50%;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+
+.msgStatus ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 4px;
+  line-height: inherit;
+}
+
+.msgStatus ul li {
+  text-align: center;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  min-height: 95vh;
+  padding-top: 40px;
+}
+
+@media screen and (max-height: 580px) {
+  main {
+    padding-top: 40px;
+  }
+  .msgStatus {
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-height: 1000px) {
+  .msgStatus {
+    width: 80%;
+    left: 10%;
+  }
+}
+
+/*--------------------
+        Layout 
+--------------------*/
+/*
+Design of the main elements
+WITHOUT Color
+*/
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  float: left;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 42px;
+}
+
+header .title {
+  margin: 0;
+  padding: 4px;
+  font-size: 1.6rem;
+  font-weight: 800;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+header .title:hover {
+  transform: scale(1.02);
+}
+
+header nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0px;
+  padding: 0;
+}
+
+header nav a {
+  padding: 0 10px;
+  margin: 6px 0px 0px 0px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: 0.4s;
+}
+
+header nav a::after {
+  content: " ";
+  display: block;
+  margin-top: 0px;
+  width: 0%;
+  height: 2px;
+  transition: width linear 0.2s;
+}
+
+header nav a:hover::after {
+  width: 100%;
+}
+
+footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 5vh;
+  min-height: 30px;
+}
+
+footer .credit {
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+/*--------------------
+        Your Files 
+--------------------*/
+.container {
+  float: right;
+  padding: 5px;
+}
+
+.container__toggle-btn {
+  width: 40px;
+  height: 20px;
+  background-color: grey;
+  border-radius: 15px;
+  padding: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.container__toggle-btn.active {
+  background-color: #00acee;
+}
+
+.container__toggle-btn.active > .container__toggle-btn__inner-cercle {
+  margin-left: 20px;
+}
+
+.container__toggle-btn__inner-cercle {
+  width: 16px;
+  height: 16px;
+  background-color: white;
+  border-radius: 50%;
+  transition: all 0.3s ease-in-out;
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    float: right;
+    padding: 5px 10px 5px 2px;
+  }
+  .container__toggle-btn {
+    width: 50px;
+    height: 25px;
+    padding: 2.5px;
+  }
+  .container__toggle-btn.active {
+    background-color: #00acee;
+  }
+  .container__toggle-btn.active > .container__toggle-btn__inner-cercle {
+    margin-left: 25px;
+  }
+  .container__toggle-btn__inner-cercle {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+main .links {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 80%;
+}
+
+main .links > a {
+  padding: 10px;
+  margin: 0px;
+}
+
+main .links .all {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.link {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+  margin: 0px;
+}
+
+.link > .link__name {
+  text-transform: uppercase;
+  font-size: 2.2rem;
+}
+
+.link__model {
+  font-size: 0.8rem;
+}
+
+@media screen and (max-width: 800px) {
+  main .links {
+    width: 95%;
+  }
+  .link > .link__name {
+    font-size: 1.2rem;
+  }
+}
+
+form {
+  display: flex;
+  margin: 20px;
+  height: auto;
+}
+
+form fieldset {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0;
+}
+
+form fieldset .form_group {
+  text-transform: capitalize;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 10px 10px 10px;
+}
+
+form fieldset .form_group :first-child {
+  margin-top: 10px;
+}
+
+form fieldset .form_group label {
+  font-weight: 700;
+}
+
+form fieldset .form_group input {
+  padding: 3px;
+}
+
+form fieldset .form_group.button_input :first-child {
+  margin-bottom: 10px;
+}
+
+form fieldset .form_group.button_input button {
+  text-transform: uppercase;
+  width: 100%;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+#progressBar {
+  width: 50%;
+  height: 10px;
 }

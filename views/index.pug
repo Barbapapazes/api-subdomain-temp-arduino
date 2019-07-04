@@ -1,10 +1,11 @@
 extends layout
 
 block content
-  h1= title
-
-  a(href="/tempAllSensors", title="All Sensor") All Sensors
-  for sensor in sensors
-    a(href='/temp?id=' + sensor.name, title=sensor.name) 
-      h2= sensor.name
-      p= sensor.model.name
+  main
+    .links
+        for sensor in sensors
+          a(href='/temp?id=' + sensor.name, title=sensor.name, class="link")
+            .link__name
+              =sensor.name
+            .link__model
+              =sensor.model.name 

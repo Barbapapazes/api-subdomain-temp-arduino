@@ -1,0 +1,19 @@
+header {
+    nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        margin: 0px;
+        padding: 0;
+        a {
+            padding: 0 10px;
+            margin: 6px 0px 0px 0px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-decoration: none;
+            text-transform: uppercase;
+            @include underscore(2px)
+        }
+    }
+}

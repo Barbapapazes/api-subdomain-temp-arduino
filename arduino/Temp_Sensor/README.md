@@ -2,14 +2,14 @@
 
 ## Getting Started
 
-* Install this [tool](https://github.com/esp8266/arduino-esp8266fs-plugin) for the Arduino IDE
+* Install [this tool](https://github.com/esp8266/arduino-esp8266fs-plugin) for the Arduino IDE
 * Open Temp_Sensor.ino
 * Upload data folder using the tool "ESP8266 Sketch Data Upload"
 * Upload the sketch to the ESP8266
 
 ## Usage
 
-* ESP8266 start as AP (Access Point), you will see a short yellow flash
+* ESP8266 starts as AP (Access Point), you will see a short yellow flash
 * Connect a device to ESP8266
 * Fill in the form
 Restart using the Web App

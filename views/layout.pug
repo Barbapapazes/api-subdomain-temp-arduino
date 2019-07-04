@@ -1,12 +1,50 @@
 doctype html
 html
+  // Head
   head
-    meta(charset='utf-8')
-    meta(http-equiv='X-UA-Compatible' content='IE=edge')
-    meta(name='viewport' content='width=device-width, initial-scale=1')
+    meta(http-equiv="Content-Type", content="text/html;charset=UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel="stylesheet", href="https://use.fontawesome.com/releases/v5.8.0/css/all.css")
+    link(href="https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,700", rel="stylesheet")
     block head-scripts
-  body
-    a(href="/", title="home") home
+    
+  
+  // Body
+  body(class="dark")
+    // Header
+    block header
+    header
+      h1.title
+        a(href="/") #{title}
+      nav
+        a(href="/edit-config") edit-config
+      .container
+        .container__toggle-btn
+         .container__toggle-btn__inner-cercle
+
+    block messages
+      if messages 
+            // Flash messages
+            if (sucess)
+                .msgStatus.sucess
+                    p!= messages
+            else
+                .msgStatus.error
+                    ul
+                        for message in messages
+                            li!= message.msg
+    
+    // Content
     block content
+
+    // Footer
+    block footer
+      footer
+        a(href="/about", class="credit")
+
+    // Scripts
+    block scripts
+      script(src="/javascripts/toggleBtn.js")
+      

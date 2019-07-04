@@ -1,0 +1,15 @@
+@media screen and (max-height: 580px) {
+    main {
+        padding-top: 40px;
+    }
+    .msgStatus {
+        font-size: 0.8rem;
+    }
+}
+
+@media screen and (max-height: 1000px) {
+    .msgStatus {
+        width: 80%;
+        left: 10%;
+    }
+}

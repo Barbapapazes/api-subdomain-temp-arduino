@@ -1,0 +1,78 @@
+/*--------------------
+    MAIN SCSS FILE 
+--------------------*/
+
+// Reset CSS
+//@import 'style/reset/reset';
+// Variables
+@import 'style/variables/variables';
+
+/*--------------------
+        Themes 
+--------------------*/
+
+
+/*
+Color for your pages
+*/
+
+// Style Color Dark
+@import 'style/themes/dark';
+// Style Color Light
+@import 'style/themes/light';
+
+/*--------------------
+        Base 
+--------------------*/
+
+
+/*
+Basics rules
+*/
+
+// Syle HTML-Body
+@import 'style/base/html-body';
+// Syle Content
+@import 'style/base/content/content';
+// Syle Content-Responsive
+@import 'style/base/content/contentResponsive';
+
+/*--------------------
+        Layout 
+--------------------*/
+
+
+/*
+Design of the main elements
+WITHOUT Color
+*/
+
+// Style Header
+@import 'style/layout/header/header';
+// Style Header Responsive
+@import 'style/layout/header/headerResponsive';
+// Style Navbar
+@import 'style/layout/navbar/navbar';
+// Style NavBar Responsive
+@import 'style/layout/navbar/navbarResponsive';
+// Style Aside
+@import 'style/layout/aside/aside';
+// Style Aside Responsive
+@import 'style/layout/aside/asideResponsive';
+// Style Footer
+@import 'style/layout/footer/footer';
+// Style Footer Responsive
+@import 'style/layout/footer/footerResponsive';
+
+/*--------------------
+        Your Files 
+--------------------*/
+
+// Style for switch them button
+@import 'style/yourFiles/toggleBtn';
+// Style for multiple links
+@import 'style/yourFiles/multipleLinks';
+// Style for forms
+@import 'style/yourFiles/form';
+// Style for loadind bar
+@import 'style/yourFiles/loadindBar';

@@ -1,0 +1,5 @@
+body {
+    &.dark {
+        @include theme ( $color, $color-dark-text, $color-dark-background, $color-dark-header-background, $color-dark-footer-background, $color-dark-hover, $border, $border-radius, $color-error-text, $color-error-background, $border-error, $color-sucess-text, $color-sucess-background, $border-sucess)
+    }
+}

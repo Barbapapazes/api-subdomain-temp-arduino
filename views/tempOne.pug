@@ -4,7 +4,45 @@ block head-scripts
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
 
 block content
-    h1 Graph from all the data
-    canvas(id="chart" width="400" height="400")
+    
+    main
+        h1#title
+        progress(id='progressBar', value=0, max=100, min=0)
+        canvas(id="chart" width="400" height="400")
+    script.
+            let progressBar = document.getElementById('progressBar'),
+                max = progressBar.getAttribute('max'),
+                value = progressBar.getAttribute('value'),
+                time = (1000 / max) * 5,
+                direction = false   
 
-    script(src="/javascripts/tempGraph.js")
+            let animateMoins
+            let animatePlus
+            let loadingPlus = function() {
+                    value++
+                    progressBar.setAttribute('value', value)
+                    if (value == max) {
+                        clearInterval(animatePlus)
+                        animateMoins = setInterval(function() {
+                            loadingMoins()           
+                        }, time)                
+                    }   
+            }
+            let loadingMoins = function() {
+                    value--
+                    progressBar.setAttribute('value', value)
+                    if (value == 0) {
+                        clearInterval(animateMoins);
+                         animatePlus = setInterval(function() {
+                            loadingPlus()           
+                        }, time)            
+                    }   
+            }
+
+            animatePlus = setInterval(function() {
+                loadingPlus()           
+            }, time)
+            
+block append scripts
+        script(src="/javascripts/tempGraph.js")
+        script(src="/javascripts/colorGraph.js")

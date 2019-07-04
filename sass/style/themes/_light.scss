@@ -1,0 +1,5 @@
+body {
+    &.light {
+        @include theme ( $color, $color-light-text, $color-light-background, $color-light-header-background, $color-light-footer-background, $color-light-hover, $border, $border-radius, $color-error-text, $color-error-background, $border-error, $color-sucess-text, $color-sucess-background, $border-sucess)
+    }
+}

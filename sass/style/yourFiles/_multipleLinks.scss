@@ -1,0 +1,51 @@
+main {
+    .links {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 80%;
+        &>a {
+            padding: 10px;
+            margin: 0px;
+        }
+        .all {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+    }
+}
+
+.link {
+    &>&__name {
+        text-transform: uppercase;
+        font-size: 2.2rem;
+    }
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    margin: 0px;
+    &__name {}
+    &__model {
+        font-size: 0.8rem;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    main {
+        .links {
+            width: 95%;
+        }
+    }
+    .link {
+        &>&__name {
+            font-size: 1.2rem
+        }
+    }
+}

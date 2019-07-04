@@ -1,0 +1,52 @@
+extends layout
+
+block content
+  main
+    p Existing Model :
+    ul#existingModel
+    form(action="#")
+      fieldset
+        .form_group
+          label(for="") Text
+          input(type="text")
+        .form_group.button_input
+          button(type="reset") reset
+          button(type="submit") submit
+  script.
+    (async function () {
+      function handleErrors(response) {
+          if (!response.ok) {
+              throw Error(response.statusText);
+          }
+            return response;
+          }
+
+          const response = await fetch("http://api.myapp:3000/setup/model")
+            .then(handleErrors)
+            .then(function(response) {
+              return response
+            }).catch(function(error) {
+              console.log(error);
+            })
+
+          const data = await response.json()
+          if (data.length == 0) {
+            const ul = document.getElementById('existingModel')
+
+            const li = document.createElement('li')
+            li.textContent = 'no data'
+
+            ul.append(li)
+          } else {
+            data.forEach((element) => {
+              const ul = document.getElementById('existingModel')
+
+              const li = document.createElement('li')
+              li.textContent = element.name
+
+              ul.append(li)
+            })
+          }
+          
+    })()
+   
